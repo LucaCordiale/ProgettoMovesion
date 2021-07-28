@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col-sm-6">
+      <h2>Lista delle Aziende</h2>
+      <p *ngIf="companyList.length < 1"> Nessuna azienda presente </p>
+
+
+      <div class="card mt-2" style="width: 18rem;" *ngFor="let company of companyList">
+
+        <div class="card-body">
+          <h2 class="card-title">{{company.name}}</h2>
+          <label for="address" class="form-label mt-3">Address</label>
+          <input type="text" required class="form-control" id="address" aria-describedby="adressHelp" #address='ngModel'
+            [(ngModel)]="company.address" name="address" readonly>
+          <div class="row">
+            
+            <div class="col">
+              <label for="phone" class="form-label mt-3">Phone</label>
+              <input type="number" required class="form-control" id="phone" aria-describedby="phoneHelp"
+                #phone='ngModel' [(ngModel)]="company.phone" name="phone" readonly>
+            </div>
+            
+            <div class="col">
+              <label for="revenue" class="form-label mt-3">Revenue</label>
+              <input type="text" class="form-control" id="revenue" aria-describedby="revenueHelp" #revenue='ngModel'
+                [(ngModel)]="company.revenue" name="revenue" readonly>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-center">Nuova Azienda</h2>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h2 class="card-title">New Company</h2>
+          <form #companyForm='ngForm' (ngSubmit)='Submit(companyForm)'>
+            <label for="exampleInputName" class="form-label mt-3">Name</label>
+            <input type="text" required class="form-control" id="exampleInputName" aria-describedby="nameHelp"
+              #name='ngModel' [(ngModel)]="company.name" name="name" required>
+            <span *ngIf='name.invalid && name.touched'>Inserire name</span>
+
+            <div>
+              <label for="address" class="form-label mt-3">Address</label>
+              <input type="text" required class="form-control" id="address" aria-describedby="adressHelp"
+                #address='ngModel' [(ngModel)]="company.address" name="address" required>
+              <span *ngIf='address.invalid && address.touched'>Inserire address</span>
+            </div>
+
+
+            <div>
+              <label for="phone" class="form-label mt-3">Phone</label>
+              <input type="number" required class="form-control" id="phone" aria-describedby="phoneHelp"
+                #phone='ngModel' [(ngModel)]="company.phone" name="phone" required>
+              <span *ngIf='phone.invalid && phone.touched'>Inserire phone</span>
+            </div>
+
+
+            <div>
+              <label for="revenue" class="form-label mt-3">Revenue</label>
+              <input type="text" class="form-control" id="revenue" aria-describedby="revenueHelp"
+                #revenue='ngModel' [(ngModel)]="company.revenue" name="revenue" required>
+              <span *ngIf='revenue.invalid && revenue.touched'>Inserire revenue</span>
+            </div>
+            <button type="submit" class="btn btn-success mt-3">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

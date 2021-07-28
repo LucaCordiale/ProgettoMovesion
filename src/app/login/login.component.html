@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form #loginform='ngForm' (ngSubmit)='login(loginform)'>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" required #username="ngModel" [(ngModel)]="user.username" placeholder="Inserisci la tua email"
+            class="form-control" name="username" id='username' pattern="[A-z].{5,12}" maxlength="12">
+          <div class="alert alert-danger" [hidden]="username.valid || username.untouched "> Inserire min 6 max 12 caratteri
+          </div>
+          <div class="alert alert-success" [hidden]="username.invalid || username.untouched "> Username inserito
+            correttamente</div>
+        </div>
+    
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" required #password="ngModel" [(ngModel)]="user.password"
+            placeholder="Scrivi la tua password" class="form-control" name="password" id='password'
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@!%*?&£#]).{8,}" class="form-control">
+          <div class="alert alert-danger" [hidden]="password.valid || password.untouched "> La password deve contenere almeno:
+            8 caratteri, una lettera maiuscola ed una minuscola, un numero e un carattere speciale </div>
+          <div class="alert alert-success" [hidden]="password.invalid || password.untouched "> Password inserita
+            correttamente </div>
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

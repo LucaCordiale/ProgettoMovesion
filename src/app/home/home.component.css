@@ -1,0 +1,12 @@
+input.ng-invalid{
+    border-color: red;
+}
+input.ng-untouched{
+    border-color: black;
+}
+span{
+    color: red;
+}
+.btn:hover{
+    transform: scale(1.1);
+}
